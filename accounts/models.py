@@ -6,8 +6,8 @@ from django.utils import timezone, text
 from django.core.validators import MaxValueValidator, MinValueValidator
 import os
 import datetime
-import random
 import string
+import secrets
 
 
 def _(something):
@@ -106,7 +106,7 @@ class Teacher(models.Model):
         return reverse("teacher_detail", kwargs={"pk": self.pk})
 
 def random_string(size=8, chars=string.ascii_uppercase + string.digits):
-    return ''.join(random.choice(chars) for _ in range(size))
+    return ''.join(secrets.choice(chars) for _ in range(size))
 
 class Classroom(models.Model):
 
